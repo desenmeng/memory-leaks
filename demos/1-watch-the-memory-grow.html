@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<article class="article-content">
+  <div itemprop="articleBody">
+
+
+    <h1>Example 1</h1>
+
+
+    <h1>Example 1: Watch the memory grow</h1>
+    <ol>
+      <li>Open DevTools</li>
+
+      <li>Select Timeline Tab</li>
+
+      <li>Select Memory</li>
+
+      <li>Record</li>
+
+      <li>Push The Button</li>
+
+    </ol>
+    <button onclick="grow()">The Button</button>
+
+    <div id="nodes" style="display:none"></div>
+    <script>
+      var x = [];
+
+      function createSomeNodes() {
+        var div,
+          buf,
+          i = 100,
+          frag = document.createDocumentFragment();
+        for (; i > 0; i--) {
+          div = document.createElement('div');
+          buf = document.createTextNode(i + ' - ' + new Date().toTimeString());
+          div.appendChild(buf);
+          frag.appendChild(div);
+        }
+        document.getElementById('nodes').appendChild(frag);
+      }
+      function grow() {
+        x.push(new Array(1000000).join('x'));
+        createSomeNodes();
+        setTimeout(grow, 1000);
+      }
+    </script>
+  </div>
+</article>
+</body>
+</html>
