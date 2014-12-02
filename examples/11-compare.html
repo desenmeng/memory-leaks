@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<article class="article-content">
+  <div itemprop="articleBody">
+
+
+    <h1>Verifying Action Cleanness</h1>
+
+    <p>This page demonstrates how action cleanness can be verified using
+      the Heap
+      Profiler. By <em>cleanness</em>, we mean that after starting and
+      completing (or canceling) the action, no garbage is left. If an action
+      leaves garbage, multiple invocations of it may result in excessive
+      memory usage.</p>
+
+    <p>Below is the source code of the script, for reference:</p>
+
+    <p>Try this:
+    </p>
+    <ul>
+      <li>Take a heap snapshot</li>
+
+      <li>Press the button:
+        <button id="doAction" onclick="action()">Action!</button>
+      </li>
+
+      <li>Take another snapshot</li>
+
+      <li>Open the <strong>Comparison</strong> view</li>
+    </ul>
+    <p></p>
+
+    <p>The view will show how objects count has changed between two
+      snapshots. In this example it can be seen that some
+      garbage <code>Item</code> objects are left from the last loop
+      iteration. They must be explicitly dereferenced on action completion
+      in order to fix the leak.</p>
+
+    <p>You can also take multiple snapshots, and compare them arbitrarily
+      (not necessary to complete the last one with the previous one.)</p>
+    <script>
+      function Item(x) {
+        this.x = x;
+      }
+
+      Item.prototype = {
+        clone: function () {
+          return new Item(this.x);
+        }
+      };
+
+      function action() {
+        for (var i = 0; i < data.length - 1; ++i) {
+          line = new Array(data[i].length);
+          for (var j = 0, l = data[i].length; j < l; ++j)
+            line[j] = data[i][j].clone();
+          for (var j = 0, l = data[i].length; j < l; ++j) {
+            data[i][j] = data[i + 1][j].clone();
+            data[i + 1][j] = line[j].clone();
+          }
+        }
+      }
+
+      var data = new Array(10);
+      for (var i = 0; i < data.length; ++i) {
+        data[i] = new Array(1000);
+        for (var j = 0, l = data[i].length; j < l; ++j)
+          data[i][j] = new Item(i * l + j);
+      }
+    </script>
+  </div>
+</article>
+</body>
+</html>
