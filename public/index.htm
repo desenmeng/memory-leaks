@@ -452,9 +452,7 @@ console.log(obj2.name);
 <script>
 var base = location.protocol + '//' + location.host;
 
-var path = location.pathname.split('/').filter(function(v){
-    return !!v;
-});
+var path = location.pathname;
 path.pop();
 path = path.join('/');
 MixJS.config({
