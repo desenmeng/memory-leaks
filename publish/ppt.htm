@@ -103,7 +103,7 @@ console.log(s2.color);
 <li>string</li>
 <li>object</li>
 <li>undefined</li>
-<li>123</li>
+<li>red</li>
 </ul>
 
 </article></section></slide>
@@ -155,7 +155,7 @@ console.log(obj2.name);
 var person = new Object();
 setName(person);
 console.log(person.name);
-function setName(obj){
+</code></pre><pre><code>function setName(obj){
     obj.name = &#39;mdemo&#39;;
     obj = new Object();
     obj.name = &#39;demohi&#39;;
@@ -166,6 +166,24 @@ console.log(person.name);
 </code></pre><ul class="moveIn">
 <li>mdemo</li>
 <li>mdemo</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide" data-transition="glue"><section class="slide-wrapper"><hgroup>
+<h2>传递参数</h2>
+
+</hgroup><article>
+
+<pre><code>function setName(obj){
+    obj.name = &#39;mdemo&#39;;
+    obj2 = obj;
+    obj2.name = &#39;demohi&#39;;
+}
+var person = new Object();
+setName(person);
+console.log(person.name);
+</code></pre><ul class="moveIn">
+<li>demohi</li>
 </ul>
 
 </article></section></slide>
@@ -375,6 +393,19 @@ console.log(obj2.name);
 
 </article></section></slide>
 <slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>总结</h2>
+
+</hgroup><article>
+
+<ul>
+<li>一个小的 dom 引用，会导致巨大的内存泄露</li>
+<li>谨慎使用全局变量，尤其是全局变量存在 dom 引用</li>
+<li>即使手动清空</li>
+<li>chrome 是神器</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
 <h2>相关链接</h2>
 
 </hgroup><article>
@@ -405,7 +436,7 @@ console.log(obj2.name);
 </li>
 <li><p><a href="http://javascript.info/tutorial/memory-leaks" target="_blank">Memory leaks</a></p>
 </li>
-<li>吉姆 &amp; 浩然</li>
+<li>刘指导 &amp; 张小俊</li>
 </ul>
 
 </article></section></slide>

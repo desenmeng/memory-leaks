@@ -77,7 +77,7 @@ console.log(s2.color);
 * string {:&.moveIn}
 * object
 * undefined
-* 123
+* red
 
 [slide data-transition="earthquake"]
 ## 动态的属性
@@ -124,6 +124,8 @@ function setName(obj){
 var person = new Object();
 setName(person);
 console.log(person.name);
+```
+```
 function setName(obj){
     obj.name = 'mdemo';
     obj = new Object();
@@ -135,6 +137,22 @@ console.log(person.name);
 ```
 * mdemo {:&.moveIn}
 * mdemo 
+
+[slide data-transition="glue"]
+
+## 传递参数
+----
+```
+function setName(obj){
+    obj.name = 'mdemo';
+    obj2 = obj;
+    obj2.name = 'demohi';
+}
+var person = new Object();
+setName(person);
+console.log(person.name);
+```
+* demohi {:&.moveIn}
 
 [slide data-transition="stick"]
 
@@ -290,6 +308,16 @@ console.log(obj2.name);
 ![](http://boke.io/content/images/2014/12/Snip20141203_34.png)
 
 [slide]
+
+## 总结
+----
+* 一个小的 dom 引用，会导致巨大的内存泄露
+* 谨慎使用全局变量，尤其是全局变量存在 dom 引用
+* 即使手动清空
+* chrome 是神器
+
+
+[slide]
 ## 相关链接
 ----
 * [文中所有 example 源码](https://github.com/demohi/memory-leaks/tree/gh-pages/examples)
@@ -310,15 +338,15 @@ console.log(obj2.name);
 * [JavaScript Profiling With The Chrome Developer Tools](http://www.smashingmagazine.com/2012/06/12/javascript-profiling-chrome-developer-tools/)
 
 * [Memory leaks](http://javascript.info/tutorial/memory-leaks)
-* 吉姆 & 浩然
+* 刘指导 & 张小俊
 
 
 
 [slide]
-## 加入我们
+## 广告时间---加入进来
 ----
 
-* [百度移动搜索部--前端、php、Node.js快到碗里来](mailto:dongyisu@baidu.com;zhao.hui@baidu.com)
+* [ 已经三个月大的移动前端技术周刊](https://github.com/mobframe/mobile-front-end-info-collection/issues)
 
 * [文章是最好的积累---boke.io](http://boke.io)
 
